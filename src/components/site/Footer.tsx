@@ -66,6 +66,8 @@ export function Footer() {
       </div>
       <div className="border-t border-white/10 py-6 text-center text-xs text-white/50">
         © {new Date().getFullYear()} NextGen Salon. All rights reserved. · Crafted with care in Chennai.
+        <span className="mx-2">·</span>
+        Designed by <a href="https://portfolio-main-zeta-blue.vercel.app/" target="_blank" rel="noreferrer" className="text-gold hover:underline transition duration-200">Mansoor</a>
       </div>
     </footer>
   );
