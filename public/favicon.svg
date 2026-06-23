@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="512" height="512" rx="120" fill="#0c0a09" />
+  
+  <!-- Outer Gold Border -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#d4af37" stroke-width="10" stroke-opacity="0.8" />
+  
+  <!-- Central Design: Scissors and Comb -->
+  <g transform="translate(0, -10)">
+    <!-- Scissors handles -->
+    <circle cx="195" cy="350" r="32" fill="none" stroke="#d4af37" stroke-width="16" />
+    <circle cx="317" cy="350" r="32" fill="none" stroke="#d4af37" stroke-width="16" />
+    
+    <!-- Scissor shanks -->
+    <path d="M 195,318 L 246,260" fill="none" stroke="#d4af37" stroke-width="16" stroke-linecap="round" />
+    <path d="M 317,318 L 266,260" fill="none" stroke="#d4af37" stroke-width="16" stroke-linecap="round" />
+    
+    <!-- Scissor blades (pointing upwards) -->
+    <path d="M 251,250 L 230,90 L 253,248 Z" fill="#d4af37" />
+    <path d="M 261,250 L 282,90 L 259,248 Z" fill="#d4af37" />
+    
+    <!-- Pivot Screw -->
+    <circle cx="256" cy="253" r="8" fill="#0c0a09" stroke="#d4af37" stroke-width="4" />
+    
+    <!-- Horizontal elegant comb behind blades -->
+    <path d="M 140,200 h 232 v 14 h -232 z" fill="#d4af37" opacity="0.9" />
+    <path d="M 150,214 v 24 h 6 v -24 z
+             M 165,214 v 24 h 6 v -24 z
+             M 180,214 v 24 h 6 v -24 z
+             M 195,214 v 24 h 6 v -24 z
+             M 210,214 v 24 h 6 v -24 z
+             M 225,214 v 24 h 6 v -24 z
+             M 240,214 v 24 h 6 v -24 z
+             M 255,214 v 24 h 6 v -24 z
+             M 270,214 v 24 h 6 v -24 z
+             M 285,214 v 24 h 6 v -24 z
+             M 300,214 v 24 h 6 v -24 z
+             M 315,214 v 24 h 6 v -24 z
+             M 330,214 v 24 h 6 v -24 z
+             M 345,214 v 24 h 6 v -24 z
+             M 360,214 v 24 h 6 v -24 z" fill="#d4af37" opacity="0.9" />
+  </g>
+</svg>
