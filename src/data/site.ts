@@ -1,11 +1,11 @@
 export const SITE = {
   name: "NextGen Salon",
   tagline: "Premium Unisex Salon, Academy & Wig Experts",
-  phone: "+91 7094418006 & +91 9710218006",
+  phone: "+91 9710218006",
   phoneRaw: "+91 9710218006",
   whatsapp: "+919710218006",
-  email: "nextgensaloon01@gmail.com",
-  website: "https://nextgensaloon01@gmail.com",
+  email: "nextgensalon01@gmail.com",
+  website: "https://nextgensalon01@gmail.com",
   whatsappMessage: "Hello NextGen Salon, I would like to book an appointment.",
   socials: {
     instagram: "https://www.instagram.com/g_salon_best_anakaputhur/",

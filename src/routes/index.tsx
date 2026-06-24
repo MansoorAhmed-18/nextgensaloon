@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
           name: "NextGen Salon",
           image: "https://nextgenerationsalon.shop/og.jpg",
           url: "https://nextgenerationsalon.shop",
-          telephone: "+91-70944-18006",
+          telephone: "+91-97102-18006",
           priceRange: "₹₹₹",
           address: { "@type": "PostalAddress", addressLocality: "Chennai", addressRegion: "TN", addressCountry: "IN" },
           openingHours: "Mo-Su 10:00-21:30",

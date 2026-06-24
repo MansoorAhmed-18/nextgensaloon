@@ -56,7 +56,7 @@ export function Contact() {
             className="space-y-5"
           >
             {[
-              { icon: MapPin, label: "Saloon Location", val: "39 jn road, saravana complex, bus stop, Kanika Amman Koil St, Mutharulandi Nagar, Anakaputhur, Chennai, Tamil Nadu 600070, India" },
+              { icon: MapPin, label: "Salon Location", val: "39 jn road, saravana complex, bus stop, Kanika Amman Koil St, Mutharulandi Nagar, Anakaputhur, Chennai, Tamil Nadu 600070, India" },
               { icon: Phone, label: "Phone", val: SITE.phone, href: `tel:${SITE.phoneRaw}` },
               { icon: Mail, label: "Email", val: SITE.email, href: `mailto:${SITE.email}` },
               { icon: Clock, label: "Working Hours", val: "Mon–Sun · 9:00 AM – 9:30 PM" },
