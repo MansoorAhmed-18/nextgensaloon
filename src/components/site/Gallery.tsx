@@ -29,9 +29,9 @@ const PRICING_DATA: Record<
       { name: "Hair Cut", price: "₹150" },
       { name: "Advanced Hair Cut", price: "₹250" },
       { name: "Ironing / Straightening", price: "₹350" },
-      { name: "Kids Hair Cut", price: "₹100" },
-      { name: "Kids Hair Styling", price: "₹150" },
-      { name: "Hair Spa (Standard)", price: "₹799" },
+      { name: "Kids Hair Cut", price: "₹150" },
+      { name: "Kids Hair Styling", price: "₹200" },
+      { name: "Hair Spa (Standard)", price: "₹599" },
     ],
   },
   "Hair Coloring": {
@@ -71,7 +71,7 @@ const PRICING_DATA: Record<
     title: "Bridal & Pre-Bridal Packages",
     desc: "Make your special day unforgettable with our expert makeup and styling.",
     items: [
-      { name: "HD Bridal Makeup & Styling", price: "₹7,999" },
+      { name: "HD Bridal Makeup & Styling", price: "₹5,000" },
       { name: "Pre-Bridal Grooming Packages", price: "₹3,499" },
       { name: "Saree Draping & Hair Accessories", price: "₹1,499" },
       { name: "Groom Package (Styling & Facial)", price: "₹3,999" },
@@ -81,10 +81,10 @@ const PRICING_DATA: Record<
     title: "Skin Care & Facials",
     desc: "Rejuvenating skin treatments, peeling, and custom facials.",
     items: [
-      { name: "Korean Glass-Skin Facial", price: "₹1,999" },
-      { name: "Premium Hydra-Facial", price: "₹2,499" },
-      { name: "Anti-Ageing Therapy", price: "₹2,999" },
-      { name: "Detan & Glow Pack", price: "₹499" },
+      { name: "Fair Bloom Facial", price: "₹2,000" },
+      { name: "Skin Miracle(Whitening)Facial", price: "₹3,500" },
+      { name: "Anti-Ageing Therapy", price: "₹2,500" },
+      { name: "Detan & Glow Pack", price: "₹2,000" },
     ],
   },
   "Salon Interior": {
@@ -119,11 +119,10 @@ export function Gallery() {
             <button
               key={c}
               onClick={() => setCat(c)}
-              className={`rounded-full px-4 py-2 text-xs font-medium uppercase tracking-wider transition ${
-                cat === c
+              className={`rounded-full px-4 py-2 text-xs font-medium uppercase tracking-wider transition ${cat === c
                   ? "bg-gradient-gold text-ink shadow-gold"
                   : "border border-border bg-card text-muted-foreground hover:border-gold/50"
-              }`}
+                }`}
             >
               {c}
             </button>
@@ -223,11 +222,10 @@ export function Gallery() {
                           <div
                             key={item.name}
                             onClick={() => setSelectedService(idx)}
-                            className={`flex items-center justify-between p-2.5 px-3.5 rounded-xl border transition cursor-pointer ${
-                              isSelected
+                            className={`flex items-center justify-between p-2.5 px-3.5 rounded-xl border transition cursor-pointer ${isSelected
                                 ? "border-gold bg-gold/10 text-white shadow-[0_0_8px_rgba(212,175,55,0.15)]"
                                 : "border-white/5 bg-white/[0.02] text-white/75 hover:border-gold/30 hover:bg-white/[0.05]"
-                            }`}
+                              }`}
                           >
                             <div className="flex items-center gap-2">
                               {isSelected ? (
