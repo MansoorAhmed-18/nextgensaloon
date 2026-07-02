@@ -16,7 +16,38 @@ const IMAGES = [
   { src: SERVICES[5].image, cat: "Wig Studio", h: "row-span-2" },
 ];
 
+const CATEGORY_IMAGES: Record<string, string> = {
+  "Hair Styling": SERVICES[0].image,
+  "Hair Coloring": SERVICES[1].image,
+  "Grooming": SERVICES[3].image,
+  "Wig Studio": SERVICES[5].image,
+  "Bridal": SERVICES[2].image,
+  "Skin": SERVICES[4].image,
+  "Salon Interior": hero,
+};
+
 const CATS = ["All", "Hair Styling", "Hair Coloring", "Grooming", "Bridal", "Skin", "Wig Studio", "Salon Interior"];
+
+const DISPLAY_NAMES: Record<string, string> = {
+  "All": "All",
+  "Hair Styling": "Haircut Prices",
+  "Hair Coloring": "Hair Coloring Prices",
+  "Grooming": "Beard Prices",
+  "Wig Studio": "Wig Studio Prices",
+  "Bridal": "Bridal Prices",
+  "Skin": "Skin Care Prices",
+  "Salon Interior": "Amenities",
+};
+
+const DISPLAY_TITLES: Record<string, string> = {
+  "Hair Styling": "Haircut Prices",
+  "Hair Coloring": "Hair Coloring Prices",
+  "Grooming": "Beard Prices",
+  "Wig Studio": "Wig Studio Prices",
+  "Bridal": "Bridal Prices",
+  "Skin": "Skin Care Prices",
+  "Salon Interior": "Salon Experience & Amenities",
+};
 
 const PRICING_DATA: Record<
   string,
@@ -102,15 +133,14 @@ export function Gallery() {
   const [cat, setCat] = useState("All");
   const [lightbox, setLightbox] = useState<typeof IMAGES[0] | null>(null);
   const [selectedService, setSelectedService] = useState<number>(0);
-  const items = cat === "All" ? IMAGES : IMAGES.filter((i) => i.cat === cat);
 
   return (
-    <section id="gallery" className="relative bg-muted/40 py-24 sm:py-32">
+    <section id="pricing" className="relative bg-muted/40 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-gold-deep">Gallery</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-gold-deep">Pricing</p>
           <h2 className="mt-3 font-display text-4xl font-bold sm:text-5xl">
-            A peek inside <span className="gradient-gold-text">our world</span>
+            Our Premium <span className="gradient-gold-text">Pricing</span>
           </h2>
         </div>
 
@@ -124,37 +154,82 @@ export function Gallery() {
                   : "border border-border bg-card text-muted-foreground hover:border-gold/50"
                 }`}
             >
-              {c}
+              {DISPLAY_NAMES[c] || c}
             </button>
           ))}
         </div>
 
-        <div className="mt-10 grid auto-rows-[180px] grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-          {items.map((img, i) => (
-            <motion.button
-              key={`${img.src}-${i}`}
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.04 }}
-              onClick={() => {
-                setLightbox(img);
-                setSelectedService(0);
-              }}
-              className={`group relative overflow-hidden rounded-2xl shadow-card ${img.h}`}
-            >
-              <img
-                src={img.src}
-                alt={img.cat}
-                loading="lazy"
-                className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
-              <div className="absolute bottom-3 left-3 text-xs font-medium uppercase tracking-widest text-white opacity-0 transition group-hover:opacity-100">
-                {img.cat}
-              </div>
-            </motion.button>
-          ))}
+        {/* Pricing Showcase Grid */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {Object.entries(PRICING_DATA)
+            .filter(([key]) => cat === "All" || key === cat)
+            .map(([key, category]) => (
+              <motion.div
+                key={key}
+                layout
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 15 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card/60 shadow-md backdrop-blur-sm transition-all duration-300 hover:border-gold/30 hover:shadow-gold/5"
+              >
+                <div>
+                  {/* Category Image Header */}
+                  {CATEGORY_IMAGES[key] && (
+                    <button
+                      onClick={() => {
+                        const matchedImg = IMAGES.find((img) => img.cat === key) || IMAGES[0];
+                        setLightbox(matchedImg);
+                        setSelectedService(0);
+                      }}
+                      className="relative h-48 w-full overflow-hidden block cursor-pointer group"
+                    >
+                      <img
+                        src={CATEGORY_IMAGES[key]}
+                        alt={DISPLAY_TITLES[key] || category.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent opacity-60 transition group-hover:opacity-40" />
+                    </button>
+                  )}
+
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 border-b border-border pb-3">
+                      <div className="h-2 w-2 rounded-full bg-gold" />
+                      <h3 className="font-display text-lg font-bold tracking-wide text-foreground">
+                        {DISPLAY_TITLES[key] || category.title}
+                      </h3>
+                    </div>
+                    <p className="mt-2 text-xs text-muted-foreground leading-relaxed min-h-[32px]">
+                      {category.desc}
+                    </p>
+                    <ul className="mt-5 space-y-3.5">
+                      {category.items.map((item) => (
+                        <li key={item.name} className="flex items-baseline justify-between gap-3">
+                          <span className="text-sm font-medium text-foreground">{item.name}</span>
+                          <span className="h-px flex-1 border-b border-dashed border-border" />
+                          <span className="text-sm font-bold text-gold-deep shrink-0">{item.price}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="px-6 pb-6 pt-2">
+                  <button
+                    onClick={() => {
+                      const matchedImg = IMAGES.find((img) => img.cat === key) || IMAGES[0];
+                      setLightbox(matchedImg);
+                      setSelectedService(0);
+                    }}
+                    className="w-full rounded-full border border-gold/30 bg-gold/5 py-2.5 text-xs font-semibold text-gold-deep transition hover:bg-gradient-gold hover:text-ink cursor-pointer"
+                  >
+                    View Details & Book
+                  </button>
+                </div>
+              </motion.div>
+            ))}
         </div>
       </div>
 
@@ -199,7 +274,7 @@ export function Gallery() {
                 <div>
                   {/* Category Indicator */}
                   <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-gold-deep">
-                    {lightbox.cat} Services
+                    {DISPLAY_TITLES[lightbox.cat] || lightbox.cat}
                   </span>
 
                   {/* Title & Description */}
@@ -272,8 +347,8 @@ export function Gallery() {
                     onClick={() => {
                       const selectedItem = PRICING_DATA[lightbox.cat]?.items[selectedService];
                       const message = selectedItem
-                        ? `Hello NextGen Salon, I'm interested in booking *${selectedItem.name}* (${selectedItem.price}) in the *${lightbox.cat}* category seen in the Gallery. Please assist me with the booking.`
-                        : `Hello NextGen Salon, I saw the *${lightbox.cat}* services in the Gallery and would like to book an appointment. Please guide me.`;
+                        ? `Hello NextGen Salon, I'm interested in booking *${selectedItem.name}* (${selectedItem.price}) in the *${DISPLAY_TITLES[lightbox.cat] || lightbox.cat}* category seen on the Pricing page. Please assist me with the booking.`
+                        : `Hello NextGen Salon, I saw the *${DISPLAY_TITLES[lightbox.cat] || lightbox.cat}* services on the Pricing page and would like to book an appointment. Please guide me.`;
                       window.open(`https://wa.me/919710218006?text=${encodeURIComponent(message)}`, "_blank");
                     }}
                     className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-gold py-3 text-sm font-semibold text-ink shadow-gold hover:opacity-95 hover:scale-[1.01] transition duration-200"

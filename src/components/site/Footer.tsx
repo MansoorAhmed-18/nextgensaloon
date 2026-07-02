@@ -38,7 +38,7 @@ export function Footer() {
         <div>
           <h4 className="font-display text-base font-semibold text-gold">Quick Links</h4>
           <ul className="mt-5 space-y-2.5 text-sm">
-            {["About", "Services", "Academy", "Gallery", "Locations", "Contact", "Book"].map((l) => (
+            {["About", "Services", "Academy", "Pricing", "Locations", "Contact", "Book"].map((l) => (
               <li key={l}>
                 <a href={`#${l.toLowerCase()}`} className="transition hover:text-gold">{l}</a>
               </li>
